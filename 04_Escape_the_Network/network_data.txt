@@ -1,0 +1,40 @@
+# Starter nodes and matrix
+nodes = ["A", "B", "C", "D", "E", "F"]
+location_names = [
+    "Server Room",
+    "Laboratory",
+    "Storage",
+    "Security Hub",
+    "Maintenance Tunnel",
+    "Exit"
+]
+matrix = [
+    [None,    4,    2, None, None, None],  # A
+    [   4, None, None,    5,    3, None],  # B
+    [   2, None, None,    1, None, None],  # C
+    [None,    5,    1, None,    1,    7],  # D
+    [None,    3, None,    1, None,    2],  # E
+    [None, None, None,    7,    2, None]   # F
+]
+
+# Separate test setups (reset from starter for each)
+query_matrix = [row[:] for row in matrix]
+query_matrix[0][5] = 20
+query_matrix[5][0] = 20
+
+query_matrix = [row[:] for row in matrix]
+query_matrix[3][4] = None  # Block D to E
+query_matrix[4][3] = None  # Block E to D
+
+test_nodes = nodes + ["G"]
+test_names = location_names + ["Isolated Exit"]
+query_matrix = [row[:] + [None] for row in matrix]
+query_matrix.append([None] * 7)
+
+test_nodes = nodes + ["G", "H"]
+test_names = location_names + ["Side Corridor", "Locked Store"]
+query_matrix = [row[:] + [None, None] for row in matrix]
+query_matrix.append([None] * 8)
+query_matrix.append([None] * 8)
+query_matrix[1][6] = query_matrix[6][1] = 3  # B to G
+query_matrix[6][7] = query_matrix[7][6] = 2  # G to H

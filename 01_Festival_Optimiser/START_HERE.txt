@@ -1,0 +1,7 @@
+FESTIVAL OPTIMISER STUDENT RESOURCES
+
+1. Complete the interactive preparation lesson by opening greedy-subsets-exhaustive-lesson.html in your browser. Download your lesson record when finished.
+2. Read Festival_Optimiser_Detailed_Stages.pdf and build the project stage by stage. Save a working version after each stage.
+3. Use Festival_Optimiser_List_Data.docx for starter data and tests. festival_lists.txt contains the main lists in plain text.
+
+The Word version of the brief contains the same instructions as the PDF. All six stages are required; stretch work is optional. Plan approximately 5-7 lessons, with longer allowed where needed.

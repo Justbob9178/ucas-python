@@ -1,0 +1,8 @@
+Festival data only
+Copy these into your own program. Index + 1 is a stable unique ID. Times are minutes after midday.
+
+names = ['Neon Fox', 'Orbit', 'Pixel Hearts', 'Static Bloom', 'Echo Park', 'Solar Tide', 'Velvet Atlas', 'Amber Lane', 'Midnight Circuit', 'Silver Pines', 'Paper Satellites', 'Copper Skies', 'Wild Harbour', 'Lunar Arcade', 'Glass Garden', 'Northern Lights', 'City Echoes', 'Crimson Waves', 'Orbit', 'Golden Hour']
+genres = ['indie', 'rock', 'pop', 'indie', 'rock', 'electronic', 'pop', 'folk', 'electronic', 'folk', 'indie', 'rock', 'pop', 'electronic', 'indie', 'folk', 'pop', 'rock', 'rock', 'folk']
+starts = [0, 30, 60, 90, 120, 150, 0, 60, 120, 180, 210, 240, 270, 300, 330, 360, 390, 420, 450, 480]
+ends = [60, 90, 120, 150, 180, 210, 60, 120, 210, 240, 270, 300, 330, 360, 390, 420, 450, 480, 510, 540]
+ratings = [8, 10, 7, 8, 6, 9, 5, 6, 8, 7, 9, 7, 6, 10, 8, 5, 7, 9, 6, 8]

@@ -1,0 +1,15 @@
+record_id,match_id,player,character,kills,deaths,damage,won
+R1,M1,Alice,Ranger,10,0,100,true
+R2,M2,Alice,Ranger,20,0,300,false
+ R1 , M1 , Alice , ranger , 10 ,0,100, TRUE
+R3,M3,Bob,Mage,5,1,500,true
+R3,M3,Bob,Mage,6,1,500,true
+R3,M3,Bob,Mage,5,1,500,true
+R4,M4,Cara,Tank,50,50,20000,true
+R5,M5,Dave,Assassin,-1,0,100,true
+R6,M6,Eve,Wizard,1,1,100,true
+R7,M7,Finn,Mage,1,1,banana,false
+R8,M8,   ,Mage,1,1,100,true
+R9,M9,Gina,Ranger,1
+R10,M10,Hank,Tank,1,1,100,true,extra
+R11,M11,Ivy,Mage,1,1,100,yes
