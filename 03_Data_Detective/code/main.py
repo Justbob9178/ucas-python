@@ -19,6 +19,7 @@ def average(arr):
 #Stage 1 Read the file and understand each record
 try:
     with open('./03_Data_Detective/game_matches.csv', 'r') as f:
+    #with open('./03_Data_Detective/hand_check.csv', 'r') as f:
         data = csv.DictReader(f)
         for row in data:
             dataarr.append(row)
@@ -109,47 +110,72 @@ for i in validated:
 #4.1 character statistics
 
 characters = {}
+characters_num = {
+    "Ranger": 0,
+    "Mage": 0,
+    "Tank": 0,
+    "Assassin": 0
+}
 
 for i in out:
     char = i["character"]
+    characters_num[char] += 1
     if char not in characters:
         characters[char] = {
             "kills": [i["kills"]],
-            "deaths": [i["deaths"]],
             "damage": [i["damage"]],
             "won": [i["won"]]
         }
     else:
         characters[char]["kills"].append(i["kills"])
-        characters[char]["deaths"].append(i["deaths"])
         characters[char]["damage"].append(i["damage"])
         characters[char]["won"].append(i["won"])
 
 for i in characters:
     print(f"{i} kills: {average(characters[i]["kills"])}")
-    print(f"{i} deaths: {average(characters[i]["deaths"])}")
     print(f"{i} damage: {average(characters[i]["damage"])}")
     print(f"{i} win percent: {average(characters[i]["won"])*100}")
 
+for i in characters_num.keys():
+    print(f"{i} - got {characters_num[i]}")
+
+#4.2 player statistics
+
 players = {}
-print(out)
+players_out = {}
+
+for i in out:
+    print(i["player"])
+    if i["player"] in players_out:
+        players_out[i["player"]] += 1
+    else:
+        players_out[i["player"]] = 1
+
+
+
 for i in out:
     player = i["player"]
     if player not in players:
         players[player] = {
             "kills": [i["kills"]],
-            "deaths": [i["deaths"]],
             "damage": [i["damage"]],
             "won": [i["won"]]
         }
     else:
         players[player]["kills"].append(i["kills"])
-        players[player]["deaths"].append(i["deaths"])
         players[player]["damage"].append(i["damage"])
         players[player]["won"].append(i["won"])
 
+
+
 for i in players:
     print(f"{i} kills: {average(players[i]["kills"])}")
-    print(f"{i} deaths: {average(players[i]["deaths"])}")
     print(f"{i} damage: {average(players[i]["damage"])}")
     print(f"{i} win percent: {average(players[i]["won"])*100}")
+
+players_out_sorted = {}
+for key in sorted(players_out, key=players_out.get):
+    players_out_sorted[key] = players_out[key]
+    
+for i in players_out_sorted.keys():
+    print(f"{i} - got {players_out_sorted[i]}")
