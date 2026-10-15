@@ -63,7 +63,8 @@ for i in dataarr:
 
 record_ids = {}
 validated = []
-good_ids = []
+to_get_rid_of = []
+to_consolidate = []
 
 
 for i in dataarr:
@@ -75,14 +76,17 @@ for i in range(len(validated)):
         #print(validated[i]["record_id"], validated[x]["record_id"], i, x)
         if validated[i]["record_id"] == validated[x]["record_id"] and i != x:
             if validated[i] == validated[x]:
-                if validated[i]["record_id"] in good_ids:
-                    print("bad")
-                else:
-                    good_ids.append(validated[i]["record_id"])
+                to_consolidate.append(validated[i]["record_id"])
             else:
-                print("bad")
+                #print(f"different\n{validated[i]}\n{validated[x]}")
+                to_get_rid_of.append(validated[i]["record_id"])
 
-print(good_ids)
+for i in to_get_rid_of:
+    if i in to_consolidate:
+        to_consolidate.pop(to_consolidate.index(i))
+
+print(to_consolidate)
+print(to_get_rid_of)
 
 for i in validated:
     print(i)
