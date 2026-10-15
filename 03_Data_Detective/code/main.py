@@ -10,10 +10,15 @@ def validate(arr):
             return False
     return True
 
+def average(arr):
+    total = 0
+    for i in arr:
+        total += int(i)
+    return total/len(arr)
 
 #Stage 1 Read the file and understand each record
 try:
-    with open('./03_Data_Detective/hand_check.csv', 'r') as f:
+    with open('./03_Data_Detective/game_matches.csv', 'r') as f:
         data = csv.DictReader(f)
         for row in data:
             dataarr.append(row)
@@ -61,7 +66,7 @@ for i in dataarr:
 
 #vStage 3 Resolve duplicates and reconcile the audit
 
-record_ids = {}
+
 validated = []
 to_get_rid_of = []
 to_consolidate = []
@@ -88,5 +93,63 @@ for i in to_get_rid_of:
 print(to_consolidate)
 print(to_get_rid_of)
 
+out = []
+
 for i in validated:
-    print(i)
+    if i["record_id"] in to_consolidate and i in out:
+        print("skipping duplicate")
+    elif i["record_id"] in to_consolidate:
+        out.append(i)
+    elif i["record_id"] not in to_get_rid_of:
+        out.append(i)
+    else:
+        print("getting rid of this")
+
+
+#4.1 character statistics
+
+characters = {}
+
+for i in out:
+    char = i["character"]
+    if char not in characters:
+        characters[char] = {
+            "kills": [i["kills"]],
+            "deaths": [i["deaths"]],
+            "damage": [i["damage"]],
+            "won": [i["won"]]
+        }
+    else:
+        characters[char]["kills"].append(i["kills"])
+        characters[char]["deaths"].append(i["deaths"])
+        characters[char]["damage"].append(i["damage"])
+        characters[char]["won"].append(i["won"])
+
+for i in characters:
+    print(f"{i} kills: {average(characters[i]["kills"])}")
+    print(f"{i} deaths: {average(characters[i]["deaths"])}")
+    print(f"{i} damage: {average(characters[i]["damage"])}")
+    print(f"{i} win percent: {average(characters[i]["won"])*100}")
+
+players = {}
+print(out)
+for i in out:
+    player = i["player"]
+    if player not in players:
+        players[player] = {
+            "kills": [i["kills"]],
+            "deaths": [i["deaths"]],
+            "damage": [i["damage"]],
+            "won": [i["won"]]
+        }
+    else:
+        players[player]["kills"].append(i["kills"])
+        players[player]["deaths"].append(i["deaths"])
+        players[player]["damage"].append(i["damage"])
+        players[player]["won"].append(i["won"])
+
+for i in players:
+    print(f"{i} kills: {average(players[i]["kills"])}")
+    print(f"{i} deaths: {average(players[i]["deaths"])}")
+    print(f"{i} damage: {average(players[i]["damage"])}")
+    print(f"{i} win percent: {average(players[i]["won"])*100}")
