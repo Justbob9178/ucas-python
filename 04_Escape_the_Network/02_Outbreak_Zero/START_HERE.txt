@@ -1,1 +1,0 @@
-Complete outbreak-grid-theory-lesson.html first, then use Outbreak_Zero_Detailed_Stages.pdf. The supplied data/setup files support implementation. Plan 5–7 lessons, allowing longer where needed. All six stages are required; optional stretch follows the core work.
